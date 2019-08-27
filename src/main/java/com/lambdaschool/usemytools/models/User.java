@@ -19,6 +19,12 @@ public class User extends Auditable
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userid;
 
+    @Column(nullable = true)
+    private String firstname;
+
+    @Column(nullable = true)
+    private String lastname;
+
     @Column(nullable = false,
             unique = true)
     private String username;
@@ -36,6 +42,7 @@ public class User extends Auditable
     {
     }
 
+
     public User(String username, String password, List<UserRoles> userRoles)
     {
         setUsername(username);
@@ -47,6 +54,15 @@ public class User extends Auditable
         this.userRoles = userRoles;
     }
 
+    public User(String firstname, String lastname, String username, String password, List<UserRoles> userRoles)
+    {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.password = password;
+        this.userRoles = userRoles;
+    }
+
     public long getUserid()
     {
         return userid;
@@ -55,6 +71,26 @@ public class User extends Auditable
     public void setUserid(long userid)
     {
         this.userid = userid;
+    }
+
+    public String getFirstname()
+    {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname)
+    {
+        this.firstname = firstname;
+    }
+
+    public String getLastname()
+    {
+        return lastname;
+    }
+
+    public void setLastname(String lastname)
+    {
+        this.lastname = lastname;
     }
 
     public String getUsername()

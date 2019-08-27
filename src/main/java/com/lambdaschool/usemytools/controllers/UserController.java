@@ -60,25 +60,25 @@ public class UserController
     }
 
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping(value = "/user", consumes = {"application/json"}, produces = {"application/json"})
-    public ResponseEntity<?> addNewUser(HttpServletRequest request, @Valid @RequestBody User newuser) throws URISyntaxException
-    {
-        logger.trace(request.getRequestURI() + " accessed");
-
-        newuser =  userService.save(newuser);
-
-        // set the location header for the newly created resource
-        HttpHeaders responseHeaders = new HttpHeaders();
-        URI newUserURI = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{userid}")
-                .buildAndExpand(newuser.getUserid())
-                .toUri();
-        responseHeaders.setLocation(newUserURI);
-
-        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
-    }
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    @PostMapping(value = "/user", consumes = {"application/json"}, produces = {"application/json"})
+//    public ResponseEntity<?> addNewUser(HttpServletRequest request, @Valid @RequestBody User newuser) throws URISyntaxException
+//    {
+//        logger.trace(request.getRequestURI() + " accessed");
+//
+//        newuser =  userService.save(newuser);
+//
+//        // set the location header for the newly created resource
+//        HttpHeaders responseHeaders = new HttpHeaders();
+//        URI newUserURI = ServletUriComponentsBuilder
+//                .fromCurrentRequest()
+//                .path("/{userid}")
+//                .buildAndExpand(newuser.getUserid())
+//                .toUri();
+//        responseHeaders.setLocation(newUserURI);
+//
+//        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+//    }
 
 
     @PutMapping(value = "/user/{id}")
