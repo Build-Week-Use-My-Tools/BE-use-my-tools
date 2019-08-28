@@ -9,12 +9,12 @@ public interface OwnerService
 {
     List<Owners> findAll(Pageable pageable);
 
-//    Owners findOwnerById(long id);
-//
-//    List<Owners> findByName(String name);
-//
-//    void delete(long id);
-//
-//    Owners save(Owners owner);
+    Owners findOwnerById(long id);
+
+    List<Owners> findByName(String name);
+
+    void delete(long id);
+
+    Owners save(Owners owner);
 
 }

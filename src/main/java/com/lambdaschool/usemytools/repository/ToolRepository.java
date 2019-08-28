@@ -17,4 +17,6 @@ public interface ToolRepository extends PagingAndSortingRepository<Tool, Long>
     @Modifying
     @Query(value = "INSERT INTO owns(toolid, ownerid) values (:toolid, :ownerid)", nativeQuery = true)
     void savetoOwner(long toolid, long ownerid);
+
+
 }

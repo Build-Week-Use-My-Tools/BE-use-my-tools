@@ -58,6 +58,10 @@ public class ToolServiceImpl implements ToolService
         Tool newTool = new Tool();
 
         newTool.setToolname(tool.getToolname());
+        newTool.setQuantity(tool.getQuantity());
+        newTool.setPrice(tool.getPrice());
+        newTool.setImage(tool.getImage());
+        newTool.setBorrowed(tool.isBorrowed());
 
         for(Owners a: tool.getOwners())
         {
@@ -71,6 +75,12 @@ public class ToolServiceImpl implements ToolService
     public void savetoOwner(long tool, long ownerid)
     {
         toolrepos.savetoOwner(tool, ownerid);
+    }
+
+    @Override
+    public void savetoUser(long tool, long userid)
+    {
+        toolrepos.savetoOwner(tool, userid);
     }
 
     @Override

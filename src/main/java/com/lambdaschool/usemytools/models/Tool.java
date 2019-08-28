@@ -27,6 +27,12 @@ public class Tool extends Auditable
     @ApiModelProperty(name = "price", value = "The price to borrow the tool", required = false, example = "12202017")
     private int price;
 
+    @ApiModelProperty(name = "image", value = "Image Of Tool", required = true, example = "https://images.unsplash.com/photo-1526714719019-b3032b5b5aac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80")
+    private String image;
+
+    @ApiModelProperty(name = "borrowed", value = "The status on if this tool is being borrowed", required = false, example = "true")
+    private boolean borrowed;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "owns", joinColumns = {@JoinColumn(name = "toolid")},
                inverseJoinColumns = {@JoinColumn(name = "ownerid")})
@@ -60,6 +66,25 @@ public class Tool extends Auditable
         this.toolname = toolname;
         this.quantity = quantity;
         this.price = price;
+        this.owners = owners;
+    }
+
+    public Tool(String toolname, int quantity, int price, String image, List<Owners> owners)
+    {
+        this.toolname = toolname;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.owners = owners;
+    }
+
+    public Tool(String toolname, int quantity, int price, String image, boolean borrowed, List<Owners> owners)
+    {
+        this.toolname = toolname;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.borrowed = borrowed;
         this.owners = owners;
     }
 
@@ -111,5 +136,25 @@ public class Tool extends Auditable
     public void setPrice(int price)
     {
         this.price = price;
+    }
+
+    public String getImage()
+    {
+        return image;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
+    }
+
+    public boolean isBorrowed()
+    {
+        return borrowed;
+    }
+
+    public void setBorrowed(boolean borrowed)
+    {
+        this.borrowed = borrowed;
     }
 }

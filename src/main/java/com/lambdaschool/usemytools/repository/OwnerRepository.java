@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 public interface OwnerRepository extends PagingAndSortingRepository<Owners, Long>
 {
-    ArrayList<Owners> findAuthorsByLastnameAndFirstname(String lastname, String firstname);
+    ArrayList<Owners> findOwnersByLastnameAndFirstname(String lastname, String firstname);
 
 }

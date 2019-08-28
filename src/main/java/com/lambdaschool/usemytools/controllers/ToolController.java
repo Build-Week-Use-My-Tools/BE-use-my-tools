@@ -9,10 +9,16 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -59,11 +65,32 @@ public class ToolController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Adds a tool to an owner",
+    @ApiOperation(value = "Adds a new tool",
                   response = void.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Tool added Successfully", response = void.class),
             @ApiResponse(code = 404, message = "Error adding tool", response = ErrorDetail.class)
+    } )
+    @PostMapping(value = "/newtool")
+    public ResponseEntity<?> addNewTool(HttpServletRequest request, @Valid
+    @RequestBody
+            Tool newTool) throws URISyntaxException
+    {
+
+        newTool = toolService.save(newTool);
+        // set the location header for the newly created resource
+        HttpHeaders responseHeaders = new HttpHeaders();
+        URI newQuoteURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{toolid}").buildAndExpand(newTool.getToolid()).toUri();
+        responseHeaders.setLocation(newQuoteURI);
+
+        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+    }
+
+    @ApiOperation(value = "Adds a tool to an owner",
+                  response = void.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Tool added to owner Successfully", response = void.class),
+            @ApiResponse(code = 404, message = "Error adding tool to owner", response = ErrorDetail.class)
     } )
     @PostMapping(value = "/data/{toolid}/owners/{ownerid}")
     public ResponseEntity<?> addToolOwners(@PathVariable long toolid, @PathVariable long ownerid)

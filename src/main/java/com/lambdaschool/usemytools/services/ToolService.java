@@ -22,5 +22,7 @@ public interface ToolService
 
     void savetoOwner(long toolid, long ownerid);
 
+    void savetoUser(long toolid, long userid);
+
     Tool update(Tool tool, long id);
 }
