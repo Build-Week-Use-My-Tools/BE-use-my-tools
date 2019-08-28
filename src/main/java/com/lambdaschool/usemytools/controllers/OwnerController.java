@@ -10,12 +10,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -44,6 +42,17 @@ public class OwnerController
     {
         List<Owners> allOwners = ownerService.findAll(pageable);
         return new ResponseEntity<>(allOwners, HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/owner/{ownerId}",
+                produces = {"application/json"})
+    public ResponseEntity<?> getOwner(HttpServletRequest request,
+                                      @PathVariable
+                                              Long ownerId)
+    {
+        Owners o = ownerService.findOwnerById(ownerId);
+        return new ResponseEntity<>(o, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Creates a new owner and assigns it to logged in user",
