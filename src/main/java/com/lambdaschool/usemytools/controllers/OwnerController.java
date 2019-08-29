@@ -37,7 +37,7 @@ public class OwnerController
                                                          "Multiple sort criteria are supported.")})
     @GetMapping(value = "/owners", produces = {"application/json"})
     public ResponseEntity<?> listOwners(@PageableDefault(page = 0,
-                                                          size = 5)
+                                                          size = 25)
                                                  Pageable pageable)
     {
         List<Owners> allOwners = ownerService.findAll(pageable);
@@ -77,6 +77,6 @@ public class OwnerController
                 .toUri();
         responseHeaders.setLocation(newExpURI);
 
-        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(ownerService.findAll(), responseHeaders, HttpStatus.CREATED);
     }
 }

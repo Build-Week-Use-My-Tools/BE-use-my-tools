@@ -26,6 +26,14 @@ public class ToolServiceImpl implements ToolService
     }
 
     @Override
+    public ArrayList<Tool> findAll()
+    {
+        ArrayList<Tool> list = new ArrayList<>();
+        toolrepos.findAll().iterator().forEachRemaining(list::add);
+        return list;
+    }
+
+    @Override
     public Tool findToolById(long id) throws EntityNotFoundException
     {
         return toolrepos.findById(id)

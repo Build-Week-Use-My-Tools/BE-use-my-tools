@@ -1,6 +1,7 @@
 package com.lambdaschool.usemytools.repository;
 
 import com.lambdaschool.usemytools.models.Tool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,5 +19,8 @@ public interface ToolRepository extends PagingAndSortingRepository<Tool, Long>
     @Query(value = "INSERT INTO owns(toolid, ownerid) values (:toolid, :ownerid)", nativeQuery = true)
     void savetoOwner(long toolid, long ownerid);
 
-
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO tool(toolid, ownerid) values (:toolid, :ownerid)", nativeQuery = true)
+    void save(long toolid, long ownerid);
 }

@@ -8,6 +8,7 @@ import java.util.List;
 public interface OwnerService
 {
     List<Owners> findAll(Pageable pageable);
+    List<Owners> findAll();
 
     Owners findOwnerById(long id);
 

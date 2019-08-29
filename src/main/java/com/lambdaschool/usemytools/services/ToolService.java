@@ -9,6 +9,7 @@ import java.util.List;
 public interface ToolService
 {
     ArrayList<Tool> findAll(Pageable pageable);
+    ArrayList<Tool> findAll();
 
     Tool findToolById(long id);
 

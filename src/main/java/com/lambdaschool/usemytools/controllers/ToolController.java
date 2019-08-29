@@ -42,7 +42,7 @@ public class ToolController
                                                          "Multiple sort criteria are supported.")})
     @GetMapping(value = "/tools", produces = {"application/json"})
     public ResponseEntity<?> listRoles(@PageableDefault(page = 0,
-                                                        size = 5)
+                                                        size = 25)
                                                Pageable pageable)
     {
         List<Tool> allTools = toolService.findAll(pageable);
@@ -83,7 +83,7 @@ public class ToolController
         URI newQuoteURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{toolid}").buildAndExpand(newTool.getToolid()).toUri();
         responseHeaders.setLocation(newQuoteURI);
 
-        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(toolService.findAll(), responseHeaders, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Adds a tool to an owner",

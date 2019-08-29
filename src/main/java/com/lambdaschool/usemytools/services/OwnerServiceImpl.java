@@ -34,6 +34,15 @@ public class OwnerServiceImpl implements OwnerService
     }
 
     @Override
+    public List<Owners> findAll()
+    {
+        List<Owners> list = new ArrayList<>();
+        ownrepos.findAll().iterator().forEachRemaining(list::add);
+        return list;
+    }
+
+
+    @Override
     public Owners findOwnerById(long id)
     {
         return ownrepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
