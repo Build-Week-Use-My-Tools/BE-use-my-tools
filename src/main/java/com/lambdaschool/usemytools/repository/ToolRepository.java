@@ -13,8 +13,8 @@ public interface ToolRepository extends PagingAndSortingRepository<Tool, Long>
 {
     List<Tool> findByToolnameContainingIgnoreCase(String toolname, Pageable pageable);
 
-    @Transactional
-    @Modifying
-    @Query(value = "INSERT INTO owns(toolid, ownerid) values (:toolid, :ownerid)", nativeQuery = true)
-    void savetoOwner(long toolid, long ownerid);
+//    @Transactional
+//    @Modifying
+//    @Query(value = "INSERT INTO owns(toolid, ownerid) values (:toolid, :ownerid)", nativeQuery = true)
+//    void savetoOwner(long toolid, long ownerid);
 }

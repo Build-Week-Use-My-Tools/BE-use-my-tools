@@ -33,16 +33,16 @@ public class Tool extends Auditable
     @ApiModelProperty(name = "borrowed", value = "The status on if this tool is being borrowed", required = false, example = "true")
     private boolean borrowed;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "ownerid")
-    @JsonIgnoreProperties({"tools", "hibernateLazyInitializer", "owners"})
+    @JsonIgnoreProperties("tools")
     private Owners owner;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "owns", joinColumns = {@JoinColumn(name = "toolid")},
-               inverseJoinColumns = {@JoinColumn(name = "ownerid")})
-    @JsonIgnoreProperties("tools")
-    private List<Owners> owners = new ArrayList<>();
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "owns", joinColumns = {@JoinColumn(name = "toolid")},
+//               inverseJoinColumns = {@JoinColumn(name = "ownerid")})
+//    @JsonIgnoreProperties("tools")
+//    private List<Owners> owners = new ArrayList<>();
 
     public Tool()
     {
@@ -59,39 +59,77 @@ public class Tool extends Auditable
         this.quantity = quantity;
     }
 
-    public Tool(String toolname, int quantity, List<Owners> owners)
+//    public Tool(String toolname, int quantity, List<Owners> owners)
+//    {
+//        this.toolname = toolname;
+//        this.quantity = quantity;
+//        this.owners = owners;
+//    }
+//
+//    public Tool(String toolname, int quantity, int price, List<Owners> owners)
+//    {
+//        this.toolname = toolname;
+//        this.quantity = quantity;
+//        this.price = price;
+//        this.owners = owners;
+//    }
+//
+//    public Tool(String toolname, int quantity, int price, String image, List<Owners> owners)
+//    {
+//        this.toolname = toolname;
+//        this.quantity = quantity;
+//        this.price = price;
+//        this.image = image;
+//        this.owners = owners;
+//    }
+//
+//    public Tool(String toolname, int quantity, int price, String image, boolean borrowed, List<Owners> owners)
+//    {
+//        this.toolname = toolname;
+//        this.quantity = quantity;
+//        this.price = price;
+//        this.image = image;
+//        this.borrowed = borrowed;
+//        this.owners = owners;
+//    }
+
+
+    public Tool(String toolname, int quantity, Owners owner)
     {
         this.toolname = toolname;
         this.quantity = quantity;
-        this.owners = owners;
+        this.owner = owner;
     }
 
-    public Tool(String toolname, int quantity, int price, List<Owners> owners)
+    public Tool(String toolname, int quantity, int price, Owners owner)
     {
         this.toolname = toolname;
         this.quantity = quantity;
         this.price = price;
-        this.owners = owners;
+        this.owner = owner;
     }
 
-    public Tool(String toolname, int quantity, int price, String image, List<Owners> owners)
+
+    public Tool(String toolname, int quantity, int price, String image, Owners owner)
     {
         this.toolname = toolname;
         this.quantity = quantity;
         this.price = price;
         this.image = image;
-        this.owners = owners;
+        this.owner = owner;
     }
 
-    public Tool(String toolname, int quantity, int price, String image, boolean borrowed, List<Owners> owners)
+    public Tool(String toolname, int quantity, int price, String image, boolean borrowed, Owners owner)
     {
         this.toolname = toolname;
         this.quantity = quantity;
         this.price = price;
         this.image = image;
         this.borrowed = borrowed;
-        this.owners = owners;
+        this.owner = owner;
     }
+
+
 
     public long getToolid()
     {
@@ -123,15 +161,15 @@ public class Tool extends Auditable
         this.quantity = quantity;
     }
 
-    public List<Owners> getOwners()
-    {
-        return owners;
-    }
-
-    public void setOwners(List<Owners> owners)
-    {
-        this.owners = owners;
-    }
+//    public List<Owners> getOwners()
+//    {
+//        return owners;
+//    }
+//
+//    public void setOwners(List<Owners> owners)
+//    {
+//        this.owners = owners;
+//    }
 
     public int getPrice()
     {

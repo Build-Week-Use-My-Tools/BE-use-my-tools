@@ -11,11 +11,11 @@ INSERT INTO tool (toolid, toolname, quantity, price, image, borrowed, ownerid) V
 INSERT INTO tool (toolid, toolname, quantity, price, image, borrowed, ownerid) VALUES (14, 'Electric Saw', 4, 15, 'https://images.unsplash.com/photo-1505855796860-aa05646cbf1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', false, 5);
 INSERT INTO tool (toolid, toolname, quantity, price, image, borrowed, ownerid) VALUES (15, 'Dewalt Finishing Sander', 8, 10, 'https://images.unsplash.com/photo-1513467655676-561b7d489a88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', false, 3);
 
-INSERT INTO owns (toolid, ownerid) VALUES (11, 6);
-INSERT INTO owns (toolid, ownerid) VALUES (12, 2);
-INSERT INTO owns (toolid, ownerid) VALUES (13, 2);
-INSERT INTO owns (toolid, ownerid) VALUES (14, 5);
-INSERT INTO owns (toolid, ownerid) VALUES (14, 3);
-INSERT INTO owns (toolid, ownerid) VALUES (15, 4);
+-- INSERT INTO owns (toolid, ownerid) VALUES (11, 6);
+-- INSERT INTO owns (toolid, ownerid) VALUES (12, 2);
+-- INSERT INTO owns (toolid, ownerid) VALUES (13, 2);
+-- INSERT INTO owns (toolid, ownerid) VALUES (14, 5);
+-- INSERT INTO owns (toolid, ownerid) VALUES (14, 3);
+-- INSERT INTO owns (toolid, ownerid) VALUES (15, 4);
 
 alter sequence hibernate_sequence restart with 25;

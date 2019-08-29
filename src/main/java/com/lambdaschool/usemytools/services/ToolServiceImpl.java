@@ -88,20 +88,19 @@ public class ToolServiceImpl implements ToolService
         newTool.setImage(tool.getImage());
         newTool.setBorrowed(tool.isBorrowed());
 
-
-        for(Owners o: tool.getOwners())
-        {
-            newTool.getOwners().add(new Owners(o.getLastname(), o.getFirstname()));
-        }
+//        for(Owners o: tool.getOwner())
+//        {
+//            newTool.getOwner().add(new Owners(o.getLastname(), o.getFirstname()));
+//        }
 
         return toolrepos.save(newTool);
     }
 
-    @Override
-    public void savetoOwner(long tool, long ownerid)
-    {
-        toolrepos.savetoOwner(tool, ownerid);
-    }
+//    @Override
+//    public void savetoOwner(long tool, long ownerid)
+//    {
+//        toolrepos.savetoOwner(tool, ownerid);
+//    }
 
 
     @Override

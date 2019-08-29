@@ -55,7 +55,7 @@ public class ToolController
             @ApiResponse(code = 200, message = "Tool Updated Successfully", response = void.class),
             @ApiResponse(code = 404, message = "Error updating Tool", response = ErrorDetail.class)
     } )
-    @PutMapping(value = "/tools/{id}")
+    @PutMapping(value = "data/tools/{id}")
     public ResponseEntity<?> updateTool(@RequestBody
                                                 Tool updateTool,
                                         @PathVariable
@@ -87,19 +87,19 @@ public class ToolController
         return new ResponseEntity<>(toolService.findAll(), responseHeaders, HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "Adds a tool to an owner",
-                  response = void.class)
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Tool added to owner Successfully", response = void.class),
-            @ApiResponse(code = 404, message = "Error adding tool to owner", response = ErrorDetail.class)
-    } )
-    @PostMapping(value = "/data/{toolid}/owners/{ownerid}")
-    public ResponseEntity<?> addToolOwners(@PathVariable long toolid, @PathVariable long ownerid)
-    {
-        toolService.savetoOwner(toolid, ownerid);
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @ApiOperation(value = "Adds a tool to an owner",
+//                  response = void.class)
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 201, message = "Tool added to owner Successfully", response = void.class),
+//            @ApiResponse(code = 404, message = "Error adding tool to owner", response = ErrorDetail.class)
+//    } )
+//    @PostMapping(value = "/data/{toolid}/owners/{ownerid}")
+//    public ResponseEntity<?> addToolOwners(@PathVariable long toolid, @PathVariable long ownerid)
+//    {
+//        toolService.savetoOwner(toolid, ownerid);
+//
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     @ApiOperation(value = "Deletes a Tool", notes = "The tool will be deleted from the database.",
                   response = void.class)
@@ -107,7 +107,7 @@ public class ToolController
             @ApiResponse(code = 200, message = "Tool Deleted Successfully", response = void.class),
             @ApiResponse(code = 500, message = "Error Deleting Tool", response = ErrorDetail.class)
     } )
-    @DeleteMapping("/tools/delete/{id}")
+    @DeleteMapping("data/tools/delete/{id}")
     public ResponseEntity<?> deleteToolById(
             @PathVariable
                     long id)

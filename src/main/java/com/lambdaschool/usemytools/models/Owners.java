@@ -25,14 +25,14 @@ public class Owners extends Auditable
     private String lastname;
 
 
-    @OneToMany(mappedBy = "owners")
-    @JsonIgnoreProperties("owners")
-    private List<Tool> tool = new ArrayList<>();
-
-
-    @ManyToMany(mappedBy = "owners")
-    @JsonIgnoreProperties({"owners", "tools"})
+    @OneToMany(mappedBy = "owner")
+    @JsonIgnoreProperties("owner")
     private List<Tool> tools = new ArrayList<>();
+
+
+//    @ManyToMany(mappedBy = "owner")
+//    @JsonIgnoreProperties({"owner", "tools"})
+//    private List<Tool> tools = new ArrayList<>();
 
     @ManyToMany(mappedBy = "owners")
     @JsonIgnoreProperties("owners")
@@ -113,13 +113,13 @@ public class Owners extends Auditable
         this.users = users;
     }
 
-    public List<Tool> getTool()
-    {
-        return tool;
-    }
-
-    public void setTool(List<Tool> tool)
-    {
-        this.tool = tool;
-    }
+//    public List<Tool> getTool()
+//    {
+//        return tool;
+//    }
+//
+//    public void setTool(List<Tool> tool)
+//    {
+//        this.tool = tool;
+//    }
 }

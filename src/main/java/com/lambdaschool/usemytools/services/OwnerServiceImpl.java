@@ -86,7 +86,7 @@ public class OwnerServiceImpl implements OwnerService
 
         for(Tool t: owner.getTools())
         {
-            newOwner.getTools().add(new Tool(t.getToolname(), t.getQuantity(), t.getPrice(), t.getImage(), t.isBorrowed(), t.getOwners()));
+            newOwner.getTools().add(new Tool(t.getToolname(), t.getQuantity(), t.getPrice(), t.getImage(), t.isBorrowed(), t.getOwner()));
         }
 
 //        for(User a: owner.getUsers())

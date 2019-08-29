@@ -21,7 +21,7 @@ public interface ToolService
 
     Tool save(Tool tool);
 
-    void savetoOwner(long toolid, long ownerid);
+//    void savetoOwner(long toolid, long ownerid);
 
     Tool update(Tool tool, long id);
 }
