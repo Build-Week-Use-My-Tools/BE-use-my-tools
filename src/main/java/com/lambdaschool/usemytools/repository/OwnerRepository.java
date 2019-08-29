@@ -13,9 +13,11 @@ public interface OwnerRepository extends PagingAndSortingRepository<Owners, Long
 {
     ArrayList<Owners> findOwnersByLastnameAndFirstname(String lastname, String firstname);
 
-    @Transactional
-    @Modifying
-    @Query(value = "INSERT INTO owner(ownerid, toolid) values (:ownerid, :toolid)", nativeQuery = true)
-    void save(long ownerid, long toolid);
+    Owners findByOwnerid(long id);
+
+//    @Transactional
+//    @Modifying
+//    @Query(value = "INSERT INTO owner(ownerid, toolid) values (:ownerid, :toolid)", nativeQuery = true)
+//    void save(long ownerid, long toolid);
 
 }

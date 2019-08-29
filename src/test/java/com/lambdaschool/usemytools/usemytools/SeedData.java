@@ -1,4 +1,4 @@
-package com.lambdaschool.usemytools;
+package com.lambdaschool.usemytools.usemytools;
 
 import com.lambdaschool.usemytools.models.Role;
 import com.lambdaschool.usemytools.models.User;

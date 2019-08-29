@@ -41,7 +41,7 @@ public class ToolController
                                                          "Default sort order is ascending. " +
                                                          "Multiple sort criteria are supported.")})
     @GetMapping(value = "/tools", produces = {"application/json"})
-    public ResponseEntity<?> listRoles(@PageableDefault(page = 0,
+    public ResponseEntity<?> listTools(@PageableDefault(page = 0,
                                                         size = 25)
                                                Pageable pageable)
     {
@@ -55,7 +55,7 @@ public class ToolController
             @ApiResponse(code = 200, message = "Tool Updated Successfully", response = void.class),
             @ApiResponse(code = 404, message = "Error updating Tool", response = ErrorDetail.class)
     } )
-    @PutMapping(value = "/data/tools/{id}")
+    @PutMapping(value = "/tools/{id}")
     public ResponseEntity<?> updateTool(@RequestBody
                                                 Tool updateTool,
                                         @PathVariable
@@ -78,6 +78,7 @@ public class ToolController
     {
 
         newTool = toolService.save(newTool);
+
         // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newQuoteURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{toolid}").buildAndExpand(newTool.getToolid()).toUri();
@@ -106,7 +107,7 @@ public class ToolController
             @ApiResponse(code = 200, message = "Tool Deleted Successfully", response = void.class),
             @ApiResponse(code = 500, message = "Error Deleting Tool", response = ErrorDetail.class)
     } )
-    @DeleteMapping("/data/tools/{id}")
+    @DeleteMapping("/tools/delete/{id}")
     public ResponseEntity<?> deleteToolById(
             @PathVariable
                     long id)

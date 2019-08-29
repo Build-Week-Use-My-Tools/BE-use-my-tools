@@ -33,6 +33,11 @@ public class Tool extends Auditable
     @ApiModelProperty(name = "borrowed", value = "The status on if this tool is being borrowed", required = false, example = "true")
     private boolean borrowed;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerid")
+    @JsonIgnoreProperties({"tools", "hibernateLazyInitializer", "owners"})
+    private Owners owner;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "owns", joinColumns = {@JoinColumn(name = "toolid")},
                inverseJoinColumns = {@JoinColumn(name = "ownerid")})
@@ -156,5 +161,15 @@ public class Tool extends Auditable
     public void setBorrowed(boolean borrowed)
     {
         this.borrowed = borrowed;
+    }
+
+    public Owners getOwner()
+    {
+        return owner;
+    }
+
+    public void setOwner(Owners owner)
+    {
+        this.owner = owner;
     }
 }
