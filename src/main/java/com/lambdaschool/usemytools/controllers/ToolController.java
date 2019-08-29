@@ -55,7 +55,7 @@ public class ToolController
             @ApiResponse(code = 200, message = "Tool Updated Successfully", response = void.class),
             @ApiResponse(code = 404, message = "Error updating Tool", response = ErrorDetail.class)
     } )
-    @PutMapping(value = "data/tools/{id}")
+    @PutMapping(value = "/data/tools/{id}")
     public ResponseEntity<?> updateTool(@RequestBody
                                                 Tool updateTool,
                                         @PathVariable
@@ -107,7 +107,7 @@ public class ToolController
             @ApiResponse(code = 200, message = "Tool Deleted Successfully", response = void.class),
             @ApiResponse(code = 500, message = "Error Deleting Tool", response = ErrorDetail.class)
     } )
-    @DeleteMapping("data/tools/delete/{id}")
+    @DeleteMapping("/data/tools/delete/{id}")
     public ResponseEntity<?> deleteToolById(
             @PathVariable
                     long id)
